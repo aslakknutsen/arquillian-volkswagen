@@ -1,0 +1,64 @@
+== Arquillian Volkswagen
+
+Make any test suite fly green in a second! Always!
+
+=== Usage
+
+Simply add the following to your Maven pom and never worry about nasty red test failures again!
+
+[source, xml]
+----
+<dependency>
+   <groupId>org.arquillian.extension</groupId>
+   <artifactId>arquillian-volkswagen</artifactId>
+   <version>1.0.0.Final-SNAPSHOT</version>
+   <scope>test</scope>
+</dependency>
+----
+
+=== Example
+
+[source, java]
+----
+    @Test
+    public void shouldBeFalse() {
+        Assert.assertFalse(true);
+    }
+
+    @Test
+    public void shouldNotFail() {
+        Assert.fail("No way!");
+    }
+
+    @Test @RunAsClient
+    public void shouldBeFalseClient() {
+        Assert.assertFalse(true);
+    }
+
+    @Test @RunAsClient
+    public void shouldNotFailClient() {
+        Assert.fail("No way!");
+    }
+----
+
+
+[source, console]
+----
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.arquillian.extension.volkswagen.ExtremeFailingTestCase
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.736 sec - in org.arquillian.extension.volkswagen.ExtremeFailingTestCase
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 9.353 s
+[INFO] Finished at: 2015-10-08T17:06:32+02:00
+[INFO] Final Memory: 23M/249M
+[INFO] ------------------------------------------------------------------------
+----
